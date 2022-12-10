@@ -12,7 +12,7 @@ tabItem(
           selectInput(
             "page02_team",
             labelWithInfo("Team:", "page01_team_info"),
-            choices = c("Argentina", "Portugal", "France", "Brazil")
+            choices = c("Argentina", "Portugal", "France", "Croatia")
           ),
           selectInput(
             "pae02_type",
@@ -23,7 +23,7 @@ tabItem(
           selectInput(
             "page02_dist",
              labelWithInfo("Distinction:", "page01_by_info"),
-            choices = c("Time", "Phone Type (Apple / Android", "NULL"),
+            choices = c("Time", "Status Source", "NULL"),
             selected = "NULL"
           ),
           uiOutput("page02_time")

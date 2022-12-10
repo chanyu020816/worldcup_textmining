@@ -12,7 +12,7 @@ tabItem(
           selectInput(
             "page01_team",
             labelWithInfo("Team:", "page01_team_info"),
-            choices = c("Argentina", "Portugal", "France", "Brazil")
+            choices = c("Argentina", "Portugal", "France", "Croatia")
           ),
           selectInput(
             "page01_type",
