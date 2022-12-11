@@ -5,6 +5,7 @@ library(remoji)
 
 ### setting twitter api
 # read my twitter api
+loc =  "/Users/liuchenyu/Desktop/worldcup_textmining/data/twitterAPI.csv"
 loc = "/home/chanyu/Desktop/school/webscrapping/project/data/twitterAPI.csv"
 api = read.csv(loc)
 API_key = api$api_key[1]
@@ -17,12 +18,6 @@ setup_twitter_oauth(API_key,API_secret,Access_token,Access_secret)
 # set 100000 post
 # removing the retweet by strip_retweets() function
 n = 10000
-bra = searchTwitter("Brazil", lang = "en", n, retryOnRateLimit = 50) %>%
-  strip_retweets() %>%
-  twListToDF()
-arg = searchTwitter("Argentina", lang = "en", n, retryOnRateLimit = 50) %>%
-  strip_retweets() %>%
-  twListToDF()
 fra = searchTwitter("equipedeFrance", lang = "en", n) %>%
   strip_retweets() %>%
   twListToDF()
@@ -63,5 +58,21 @@ twitterScrap <- function(keywords, n, start_date, end_date) {
   cat("done!!!!")
   return(cont)
 }
+bra
+pro = TRUE
+while (pro) {
+  
+}
+bra1 = twitterScrap("Brazil", 40000, "2022/12/02", "2022/12/11")
+write.csv(
+  bra1,
+  "/Users/liuchenyu/Desktop/worldcup_textmining/data/brazil.csv"
+  )
+arg1 = twitterScrap("Argentina", 50000, "2022/12/02", "2022/12/11")
+unsub_emoji(arg[16, 1])
+write.csv(
+  arg1,
+  "/Users/liuchenyu/Desktop/worldcup_textmining/data/argentina.csv"
+)
+por = twitterScrap("Portugal", 50000, "2022/12/03", "2022/12/12")
 
-bra = twitterScrap("Brazil", 50000, "2022/12/01", "2022/12/10")
