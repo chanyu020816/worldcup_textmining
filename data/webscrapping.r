@@ -6,7 +6,7 @@ library(remoji)
 ### setting twitter api
 # read my twitter api
 loc =  "/Users/liuchenyu/Desktop/worldcup_textmining/data/twitterAPI.csv"
-loc = "/home/chanyu/Desktop/school/webscrapping/project/data/twitterAPI.csv"
+loc = "/home/chanyu/Desktop/school/webscrapping/project/data/"
 api = read.csv(loc)
 API_key = api$api_key[1]
 API_secret = api$api_secret[1]
@@ -15,16 +15,8 @@ Access_secret = api$access_secret[1]
 setup_twitter_oauth(API_key,API_secret,Access_token,Access_secret)
 
 ### web scrapping for 4 different teams in terms of their twitter content
-# set 100000 post
+# set 50000 post
 # removing the retweet by strip_retweets() function
-n = 10000
-fra = searchTwitter("equipedeFrance", lang = "en", n) %>%
-  strip_retweets() %>%
-  twListToDF()
-por = searchTwitter("Portugal", lang = "en", n) %>%
-  strip_retweets() %>%
-  twListToDF()
-
 
 twitterScrap <- function(keywords, n, start_date, end_date) {
   start = as.Date(start_date)
@@ -58,21 +50,23 @@ twitterScrap <- function(keywords, n, start_date, end_date) {
   cat("done!!!!")
   return(cont)
 }
-bra
-pro = TRUE
-while (pro) {
+
+# bra = twitterScrap("Brazil", 50000, "2022/12/02", "2022/12/11")
+# arg = twitterScrap("Argentina", 50000, "2022/12/02", "2022/12/11")
+# por = twitterScrap("Portugal", 50000, "2022/12/03", "2022/12/12")
+# fra = twitterScrap("equipedefrance", 50000, "2022/12/03", "2022/12/12")
+df = list()
+df$bra = read.csv(paste0(loc, "/brazil.csv"))
+df$arg = read.csv(paste0(loc, "/argentina.csv"))
+df$por = read.csv(paste0(loc, "/portugal.csv"))
+df$fra = read.csv(paste0(loc, "/france.csv"))
+
+for (i in 1:4) {
+  # remove emoji
+  df[[i]]$text = gsub("[^\x01-\x7F]", "", df[[i]]$text)
+  # remove links  
+  df[[i]]$text = gsub("https:.+", "", df[[i]]$text)
+  # remove tags => @xxxx
+  df[[i]]$text = gsub("@[0-9a-zA-Z_]+", "", df[[i]]$text)
   
 }
-bra1 = twitterScrap("Brazil", 40000, "2022/12/02", "2022/12/11")
-write.csv(
-  bra1,
-  "/Users/liuchenyu/Desktop/worldcup_textmining/data/brazil.csv"
-  )
-arg1 = twitterScrap("Argentina", 50000, "2022/12/02", "2022/12/11")
-unsub_emoji(arg[16, 1])
-write.csv(
-  arg1,
-  "/Users/liuchenyu/Desktop/worldcup_textmining/data/argentina.csv"
-)
-por = twitterScrap("Portugal", 50000, "2022/12/03", "2022/12/12")
-
