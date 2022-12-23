@@ -11,22 +11,36 @@ tabItem(
           "Setting",
           selectInput(
             "page02_team",
-            labelWithInfo("Team:", "page01_team_info"),
-            choices = c("Argentina", "Portugal", "France", "Croatia")
-          ),
-          selectInput(
-            "pae02_type",
-             labelWithInfo("Type:", "page01_type_info"),
-            choices = c("Positive / Negative", "Sentiment", "NULL"),
-            selected = "NULL"
+            "Team",
+            choices = c(
+              "Brazil" = "bra",
+              "Argentina" = "arg",
+              "Portugal" = "por",
+              "France" = "fra"
+            )
           ),
           selectInput(
             "page02_dist",
-             labelWithInfo("Distinction:", "page01_by_info"),
-            choices = c("Time", "Status Source", "NULL"),
+            "Distinction",
+            choices = c(
+              "Period" = "period",
+              "Resource" = "phone",
+              "NULL"
+            ),
             selected = "NULL"
           ),
-          uiOutput("page02_time")
+          uiOutput("page02_period"),
+          selectInput(
+            "page02_type",
+            "Type",
+            choices = c("Positive / Negative", "Sentiment", "NULL"),
+            selected = "NULL"
+          ),
+          sliderInput(
+            "page02_max_num",
+            "Select the maximum number of words",
+            min = 5, max = 50, value = 20
+          )
         )
       )
     ),
@@ -37,10 +51,16 @@ tabItem(
       title = "",
       tabsetPanel(
         tabPanel(
-          "Twitter content"
+          "Bar Chart",
+          plotOutput("page02_bar")
         ),
         tabPanel(
-          "Word Cloud"
+          "Pie Chart",
+          plotOutput("page02_pie")
+        ),
+        tabPanel(
+          "Line Graph (period)",
+          plotOutput("page02_line")
         ),
         side = "right"
       )

@@ -29,9 +29,9 @@ dashboardPage(
   # 主要頁面
   body = dashboardBody(
     tabItems(
-      # tab 01 - 資料
+
       source("./page01_data_ui.r", encoding = "utf-8", local = T)$value ,
-      # tab 02 - 散佈圖
+
       source("./page02_SentiAnalysis_ui.r", encoding = "utf-8", local = T)$value
     )
   ),
