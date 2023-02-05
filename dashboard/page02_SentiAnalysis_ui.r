@@ -52,15 +52,15 @@ tabItem(
       tabsetPanel(
         tabPanel(
           "Bar Chart",
-          plotOutput("page02_bar")
+          plotOutput("page02_bar", width = "100%", height = "1200px")
         ),
         tabPanel(
           "Pie Chart",
-          plotOutput("page02_pie")
+          plotOutput("page02_pie", width = "100%", height = "1200px")
         ),
         tabPanel(
           "Line Graph (period)",
-          plotOutput("page02_line")
+          plotOutput("page02_line", width = "100%", height = "1200px")
         ),
         side = "right"
       )
