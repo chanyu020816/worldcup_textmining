@@ -59,14 +59,14 @@ tabItem(
         tabPanel(
           "Word Cloud",
           withSpinner(
-            plotOutput("wordcloud", width = "100%", height = "800px"),
+            plotOutput("wordcloud", width = "100%", height = "600px"),
             color = "#0dc5c1"
           )
         ),
         tabPanel(
           "Comparision Cloud",
            withSpinner(
-            plotOutput("comparison_plot", width = "100%", height = "1000px"),
+            plotOutput("comparison_plot", width = "100%", height = "800px"),
             color = "#0dc5c1"
           )
         )

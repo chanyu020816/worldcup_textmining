@@ -145,7 +145,7 @@ observe({
         max.words = as.numeric(input$page01_max_num), match.colors = TRUE,
         title.size = 1, scale = c(10, 1),  main = "Title"
       )
-    title = paste("Comparison Cloud by",  title)
-    text(x = 0.5, y = 0.92, "Comparison Cloud", cex = 2.5)
+    title = paste("Comparison Cloud",  title)
+    text(x = 0.5, y = 1, title, cex = 2.5)
   })
 })

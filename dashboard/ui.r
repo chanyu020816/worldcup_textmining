@@ -3,7 +3,7 @@ dashboardPage(
   # 標題
   header = dashboardHeader(
     title = "World Cup Semi Analysis",
-    status = "lightblue"
+    status = "#f0fafe"
 
   ),
   # 側邊選單

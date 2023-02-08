@@ -13,7 +13,7 @@ function(input, output, session) {
     )
   }
 
-  loc = "/home/chanyu/Desktop/school/webscrapping/project/data/"
+  loc = "/Users/chenyuliu/Desktop/project/2022WC_4teamsTwitter_TextAnalysis/data/"
 
   bra_content <- read.csv(paste0(loc, "bra_text.csv"))
   arg_content <- read.csv(paste0(loc, "arg_text.csv"))
@@ -36,11 +36,18 @@ function(input, output, session) {
   )
 
   sent_df = list()
-  sent_df[["bra"]] = data.frame(sent_type, n = colSums(bra_sen))
-  sent_df[["arg"]] = data.frame(sent_type, n = colSums(arg_sen))
-  sent_df[["por"]] = data.frame(sent_type, n = colSums(por_sen))
-  sent_df[["fra"]] = data.frame(sent_type, n = colSums(fra_sen))
+  sent_df[["bra"]] = data.frame(sent_type, n = colSums(bra_sent)[-1])
+  sent_df[["arg"]] = data.frame(sent_type, n = colSums(arg_sent)[-1])
+  sent_df[["por"]] = data.frame(sent_type, n = colSums(por_sent)[-1])
+  sent_df[["fra"]] = data.frame(sent_type, n = colSums(fra_sent)[-1])
 
+  
+  sim.dir <- file.path(find.package("bayesTFR"), "ex-data", "bayesTFR.output")
+  m <- get.tfr.mcmc(sim.dir)
+  countries = tolower(as.vector(country.names(m)))
+  
+  
+  
   source("./page01_data_server.r", encoding = "utf-8", local = T)
 
   source("./page02_SentiAnalysis_server.r", encoding = "utf-8", local = T)
