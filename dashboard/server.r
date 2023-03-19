@@ -13,7 +13,7 @@ function(input, output, session) {
     )
   }
 
-  loc = "/Users/chenyuliu/Desktop/project/2022WC_4teamsTwitter_TextAnalysis/data/"
+  loc = "/Users/chenyuliu/Desktop/project/2022WC_4teamsTwitter_TextAnalysis/dashboard/data/"
 
   bra_content <- read.csv(paste0(loc, "bra_text.csv"))
   arg_content <- read.csv(paste0(loc, "arg_text.csv"))
